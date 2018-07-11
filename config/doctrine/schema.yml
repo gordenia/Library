@@ -1,0 +1,169 @@
+Author:
+  columns:
+    id_author:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    name:
+      type: string(45)
+      notnull: true
+Book:
+  actAs:
+    Timestampable: 
+      created: 
+        name: date_insert 
+      updated: 
+        disabled: true 
+  columns:
+    id_book:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    id_author:
+      type: integer(4)
+      unsigned: 1
+    id_genre:
+      type: integer(4)
+      unsigned: 1
+    rating:
+      type: integer(1)
+      unsigned: 1
+      default: '0'
+    date_insert: 
+      type: timestamp
+      notnull: true
+    name: string(45)
+    illustration: string(45)
+    fact: string(2147483647)
+    year_create: string(4)
+  relations:
+    Genre:
+      local: id_genre
+      foreign: id_genre
+      type: one
+    Author:
+      local: id_author
+      foreign: id_author
+      type: one
+Comment:
+  actAs:
+    Timestampable: 
+      created: 
+        name: date_insert 
+      updated: 
+        disabled: true
+  columns:
+    id_comment:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    comment:
+      type: string(2147483647)
+      notnull: true
+    id_user:
+      type: integer(4)
+      unsigned: 1
+      notnull: true
+    id_book:
+      type: integer(4)
+      unsigned: 1
+      notnull: true
+    rating:
+      type: integer(1)
+      unsigned: 1
+      default: '0'
+    date_insert:
+      type: timestamp
+      notnull: true
+  relations:
+    User:
+      local: id_user
+      foreign: id_user
+      type: one
+      onDelete: CASCADE
+    Book:
+      local: id_book
+      foreign: id_book
+      type: one
+      onDelete: CASCADE
+Genre:
+  columns:
+    id_genre:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    name:
+      type: string(45)
+      notnull: true
+Role:
+  columns:
+    id_role:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    role:
+      type: string(45)
+      notnull: true
+User:
+  columns:
+    id_user:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    name:
+      type: string(45)
+      notnull: true
+    login:
+      type: string(45)
+      notnull: true
+    password:
+      type: string(20)
+      notnull: true
+    id_role:
+      type: integer(4)
+      unsigned: 1
+    avatar: string(100)
+  relations:
+    Role:
+      local: id_role
+      foreign: id_role
+      type: one
+View:
+  actAs:
+    Timestampable: 
+      created: 
+        name: date_insert 
+      updated: 
+        disabled: true
+  columns:
+    id_view:
+      type: integer(4)
+      unsigned: 1
+      primary: true
+      autoincrement: true
+    id_book:
+      type: integer(4)
+      unsigned: 1
+      notnull: true
+    id_user:
+      type: integer(4)
+      unsigned: 1
+      notnull: true
+    date_insert:
+      type: timestamp
+      notnull: true
+  relations:
+    User:
+      local: id_user
+      foreign: id_user
+      type: one
+    Book:
+      local: id_book
+      foreign: id_book
+      type: one

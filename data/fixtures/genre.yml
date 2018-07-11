@@ -1,0 +1,11 @@
+Genre:
+  novel:
+    name: роман
+  narrative:
+    name: повесть
+  detective:
+    name: детектив
+  adventure:
+    name: приключения
+  fantasy:
+    name: фантастика

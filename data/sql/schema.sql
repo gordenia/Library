@@ -1,0 +1,15 @@
+CREATE TABLE author (id_author INT UNSIGNED AUTO_INCREMENT, name VARCHAR(45) NOT NULL, PRIMARY KEY(id_author)) ENGINE = INNODB;
+CREATE TABLE book (id_book INT UNSIGNED AUTO_INCREMENT, id_author INT UNSIGNED, id_genre INT UNSIGNED, rating TINYINT UNSIGNED DEFAULT '0', date_insert DATETIME, name VARCHAR(45), illustration VARCHAR(45), fact TEXT, year_create VARCHAR(4), INDEX id_genre_idx (id_genre), INDEX id_author_idx (id_author), PRIMARY KEY(id_book)) ENGINE = INNODB;
+CREATE TABLE comment (id_comment INT UNSIGNED AUTO_INCREMENT, comment TEXT NOT NULL, id_user INT UNSIGNED NOT NULL, id_book INT UNSIGNED NOT NULL, rating TINYINT UNSIGNED DEFAULT '0', date_insert DATETIME, INDEX id_user_idx (id_user), INDEX id_book_idx (id_book), PRIMARY KEY(id_comment)) ENGINE = INNODB;
+CREATE TABLE genre (id_genre INT UNSIGNED AUTO_INCREMENT, name VARCHAR(45) NOT NULL, PRIMARY KEY(id_genre)) ENGINE = INNODB;
+CREATE TABLE role (id_role INT UNSIGNED AUTO_INCREMENT, role VARCHAR(45) NOT NULL, PRIMARY KEY(id_role)) ENGINE = INNODB;
+CREATE TABLE temp (id_temp INT UNSIGNED AUTO_INCREMENT, date DATETIME, PRIMARY KEY(id_temp)) ENGINE = INNODB;
+CREATE TABLE user (id_user INT UNSIGNED AUTO_INCREMENT, name VARCHAR(45) NOT NULL, login VARCHAR(45) NOT NULL, password VARCHAR(20) NOT NULL, id_role INT UNSIGNED, avatar VARCHAR(100), INDEX id_role_idx (id_role), PRIMARY KEY(id_user)) ENGINE = INNODB;
+CREATE TABLE view (id_view INT UNSIGNED AUTO_INCREMENT, id_book INT UNSIGNED NOT NULL, id_user INT UNSIGNED NOT NULL, date_insert DATETIME, INDEX id_user_idx (id_user), INDEX id_book_idx (id_book), PRIMARY KEY(id_view)) ENGINE = INNODB;
+ALTER TABLE book ADD FOREIGN KEY (id_genre) REFERENCES genre(id_genre);
+ALTER TABLE book ADD FOREIGN KEY (id_author) REFERENCES author(id_author);
+ALTER TABLE comment ADD FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE;
+ALTER TABLE comment ADD FOREIGN KEY (id_book) REFERENCES book(id_book) ON DELETE CASCADE;
+ALTER TABLE user ADD FOREIGN KEY (id_role) REFERENCES role(id_role);
+ALTER TABLE view ADD FOREIGN KEY (id_user) REFERENCES user(id_user);
+ALTER TABLE view ADD FOREIGN KEY (id_book) REFERENCES book(id_book);

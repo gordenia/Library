@@ -1,0 +1,73 @@
+Book:
+  faforit:
+    name: Фаворит
+    Author: pikul
+    Genre: novel
+    illustration: /images/favorit_pikul.jpg
+    year_create: 1982
+  hard:
+    name: Каторга
+    Author: pikul
+    Genre: novel
+    illustration: /images/katorga_pikul.jpg
+    year_create: 1987
+  devilry:
+    name: Нечистая сила
+    Author: pikul
+    Genre: novel
+    illustration: /images/nechist_pikul.jpg
+    year_create: 1979
+  master_and_margarita:
+    name: Мастер и Маргарита
+    Author: bulgakov
+    Genre: novel
+    illustration: /images/master_i_margaritta_bulgakov.jpg
+    year_create: 1966
+  white_guard:
+    name: Белая гвардия
+    Author: bulgakov
+    Genre: novel
+    illustration: /images/belay_gvardia_bulgakov.jpg
+    year_create: 1925
+  dog_heart:
+    name: Собачье сердце
+    Author: bulgakov
+    Genre: narrative
+    illustration: /images/sobache_serdce_bulgakov.jpg
+    year_create: 1968
+  10_negroes:
+    name: 10 негритят
+    Author: christie
+    Genre: detective
+    illustration: /images/10_negr_kristy.jpg
+    year_create: 1939
+  eastern_express:
+    name: Убийство в Восточном экспрессе
+    Author: christie
+    Genre: detective
+    illustration: /images/vost_express_kristy.jpg
+    year_create: 1934
+  harry_potter_and_the_goblet_of_fire:
+    name: Гарри Поттер и Кубок Огня
+    Author: rowling
+    Genre: adventure
+    illustration: /images/45_tn3.jpg
+    year_create: 2000
+  picture_of_dorian_grey:
+    name: Портрет Дориана Грея
+    Author: wilde
+    Genre: novel
+    illustration: /images/321.jpg
+    year_create: 1912
+  anna_karenina:
+    name: Анна Каренина 
+    Author: tolstoy
+    Genre: novel
+    illustration: /images/577f.jpg
+    year_create: 1877
+  war_and_peace:
+    name: Война и мир 
+    Author: tolstoy
+    Genre: novel
+    illustration: /images/291298.jpg
+    year_create: 1867

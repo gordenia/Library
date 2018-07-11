@@ -1,0 +1,29 @@
+Author:
+  pikul:
+    name: В.С. Пикуль
+  bulgakov:
+    name: М. А. Булгаков 
+  christie:
+    name: Агата Кристи
+  rowling:
+    name: Джоан Роулинг
+  wilde:
+    name: Оскар Уайльд
+  tolstoy:
+    name: Лев Толстой
+  markes:
+    name: Габриэль Гарсиа Маркес
+  duma:
+    name: Александр Дюма
+  mccalou:
+    name: Колин Маккалоу
+  conan_doyle:
+    name: Артур Конан Дойл
+  hugo:
+    name: Виктор Гюго
+  pushkin:
+    name: Александр Пушкин
+  exupery:
+    name: Антуан де Сент-Экзюпери
+  vasiliev:
+    name: Борис Васильев

@@ -1,0 +1,89 @@
+# default rules
+homepage:
+  url:   /
+  param: { module: Library, action: index }
+
+find_by_genre:
+  url:   /Library/Genre/*
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: index }
+
+find_by_author:
+  url:   /Library/AuthorBook/*
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: index }
+
+author:
+  url:   /Library/Auhor
+  class:   sfDoctrineRoute
+  options: { model: Author, type: object }
+  param: { module: Library, action: author }
+
+search:
+  url:   /Library/Search
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: search }
+
+top:
+  url:   /Library/Top/*
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: index }
+
+new:
+  url:   /Library/New/*
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: index }
+
+form_registartion:
+  url:   /Library/Registration
+  class:   sfDoctrineRoute
+  options: { model: User, type: object }
+  param: { module: Library, action: registration }
+
+user_profile:
+  url:   /Library/Profile
+  class:   sfDoctrineRoute
+  options: { model: User, type: object }
+  param: { module: Library, action: userProfile }
+
+change_book:
+  url:   /Library/ChangeBook
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: changeBook }
+
+add_book:
+  url:   /Library/create
+  class:   sfDoctrineRoute
+  options: { model: Book, type: object }
+  param: { module: Library, action: create }
+
+log_out:
+  url:   /Library/LogOut
+  class:   sfDoctrineRoute
+  options: { model: User, type: object }
+  param: { module: Library, action: logOut }
+
+delete_user:
+  url:   /Library/deleteUser
+  param: { module: Library, action: deleteUser}
+
+change_avatar_user:
+  url:   /Library/changeAvatarUser
+  param: { module: Library, action: changeAvatarUser}
+
+view:
+  url:   /Library/view
+  param: { module: Library, action: view}
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

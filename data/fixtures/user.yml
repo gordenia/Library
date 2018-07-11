@@ -1,0 +1,16 @@
+User:
+  oly:
+    name: Оля
+    login: o.zagidullina
+    password: 123
+    Role: admin
+  ilya:
+    name: Илья
+    login: iluhamprof
+    password: 123
+    Role: user
+  oleg:
+    name: Олег
+    login: advance
+    password: 123
+    Role: user
