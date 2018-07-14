@@ -7,17 +7,17 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($user_list as $user): ?>
+    <? foreach ($userList as $user): ?>
       <tr>
-        <input type="hidden" class = "user_id" value = "<?= $user->getid_user() ?>"/>
+        <input type="hidden" class = "user_id" value = "<?= $user->getUserId() ?>"/>
         <input type="hidden" class = "url" value = "<?= 'deleteUser' ?>"/>
         <td>
-          <img src="<?= $user->getavatar() ?>" alt="<?= $user->getname() ?>" class="icon-user img-circle">
-          <?= $user->getname() ?>
+          <img src="<?= $user->getUserAvatar() ?>" alt="<?= $user->getUserName() ?>" class="icon-user img-circle">
+          <?= $user->getUserName() ?>
         </td>
-        <td class="vertical-align"><?= $user->getlogin() ?></td>
+        <td class="vertical-align"><?= $user->getUserLogin() ?></td>
         <td class="vertical-align btn-link btn-del-user">Удалить профиль</td>
       </tr>
-    <?php endforeach; ?>
+    <? endforeach; ?>
   </tbody>
 </table>

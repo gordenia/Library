@@ -5,5 +5,28 @@
  */
 class User extends BaseUser
 {
+  public function getUserId()
+  {
+    return $this->_get('id_user');
+  }
 
+  public function getUserAvatar()
+  {
+    return $this->_get('avatar');
+  }
+
+  public function getUserName()
+  {
+    return $this->_get('name');
+  }
+
+  public function getUserLogin()
+  {
+    return $this->_get('login');
+  }
+
+  public function getUserRole()
+  {
+    return $this->Role->_get('role');
+  }
 }

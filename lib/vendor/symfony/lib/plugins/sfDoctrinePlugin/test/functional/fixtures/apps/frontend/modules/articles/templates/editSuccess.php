@@ -1,15 +1,15 @@
-<?php $article = $form->getObject() ?>
-<h1><?php echo $form->isNew() ? 'New' : 'Edit' ?> Articles</h1>
+<? $article = $form->getObject() ?>
+<h1><? echo $form->isNew() ? 'New' : 'Edit' ?> Articles</h1>
 
-<form action="<?php echo url_for('articles/update'.(!$form->isNew() ? '?id='.$article->get('id') : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form action="<?= url_for('articles/update'.(!$form->isNew() ? '?id='.$article->get('id') : '')) ?>" method="post" <? $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
   <table>
     <tfoot>
       <tr>
         <td colspan="2">
-          &nbsp;<a href="<?php echo url_for('articles/index') ?>">Cancel</a>
-          <?php if (!$form->isNew()): ?>
-            &nbsp;<?php echo link_to('Delete', 'articles/delete?id='.$article->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
-          <?php endif; ?>
+          &nbsp;<a href="<?= url_for('articles/index') ?>">Cancel</a>
+          <? if (!$form->isNew()): ?>
+            &nbsp;<?= link_to('Delete', 'articles/delete?id='.$article->get('id'), array('post' => true, 'confirm' => 'Are you sure?')) ?>
+          <? endif; ?>
           <input type="submit" value="Save" />
         </td>
       </tr>

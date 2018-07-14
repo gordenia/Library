@@ -5,4 +5,13 @@
  */
 class Genre extends BaseGenre
 {
+  public function getGenreId()
+  {
+    return $this->_get('id_genre');
+  }
+
+  public function getGenreName()
+  {
+    return $this->_get('name');
+  }
 }

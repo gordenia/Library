@@ -1,4 +1,4 @@
-<?php
+<?
 
 /**
  * article actions.

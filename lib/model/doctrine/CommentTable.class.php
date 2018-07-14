@@ -24,18 +24,18 @@ class CommentTable extends Doctrine_Table
       return $q->execute();
     }
 
-    public function findBookComment($id_book)
+    public function findBookComment($bookId)
     {
       $q = $this->createQuery('c')
-        ->where('c.id_book = '. $id_book);
+        ->where('c.id_book = '. $bookId);
       return $q->execute();
     }
 
-    public function getBookRating($id_book)
+    public function getBookRating($bookId)
     {
       $q = $this->createQuery('c')
         ->select('round(avg(c.rating),0) as rating')
-        ->where('c.id_book = '. $id_book);
+        ->where('c.id_book = '. $bookId);
       return $q->fetchOne();
     }
 }

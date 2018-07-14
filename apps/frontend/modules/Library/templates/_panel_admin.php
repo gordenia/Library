@@ -14,7 +14,7 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
-        <?php include_partial( 'user_list', ['user_list' => $user_list]) ?>
+        <? include_partial( 'user_list', ['userList' => $userList]) ?>
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
-        <?php include_partial( 'last_user_comment', ['last_comment_list' => $last_comment_list]) ?>
+        <? include_partial( 'last_user_comment', ['lastCommentList' => $lastCommentList]) ?>
       </div>
     </div>
   </div>

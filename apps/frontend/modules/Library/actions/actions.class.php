@@ -1,4 +1,4 @@
-<?php
+<?
 
 /**
  * Library actions.
@@ -14,62 +14,62 @@ class LibraryActions extends sfActions
   {
     if (!empty($request->getParameter('top')))
     {
-      $this->book_list = Doctrine::getTable('Book')->getTopBook();
+      $this->bookList = Doctrine::getTable('Book')->getTop100Books();
     }
     elseif (!empty($request->getParameter('new')))
     {
-      $this->book_list = Doctrine::getTable('Book')->getNewBook();
+      $this->bookList = Doctrine::getTable('Book')->getNew100Books();
     }
-    elseif (!empty($request->getParameter('id_genre')))
+    elseif (!empty($request->getParameter('genreId')))
     {
-      $this->book_list = Doctrine::getTable('Book')->findByGenre($request->getParameter('id_genre'));
+      $this->bookList = Doctrine::getTable('Book')->findByGenre($request->getParameter('genreId'));
     }
-    elseif (!empty($request->getParameter('id_author')))
+    elseif (!empty($request->getParameter('authorId')))
     {
-      $this->book_list = Doctrine::getTable('Book')->findByAuthor($request->getParameter('id_author'));
+      $this->bookList = Doctrine::getTable('Book')->findByAuthor($request->getParameter('authorId'));
     }
     else
     {
-      $this->book_list = Doctrine::getTable('Book')->getBook();
+      $this->bookList = Doctrine::getTable('Book')->getAllBooks();
     }
 
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->book = Doctrine::getTable('Book')->find($request->getParameter('id_book'));
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
+    $this->book = Doctrine::getTable('Book')->find($request->getParameter('bookId'));
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
     $this->user = Doctrine::getTable('User')->findUserByLogin($this->getUser()->getAttribute('userLogin'));
-    $this->book_comment_list = Doctrine::getTable('Comment')->findBookComment($request->getParameter('id_book'));
+    $this->bookCommentList = Doctrine::getTable('Comment')->findBookComment($request->getParameter('bookId'));
     $this->forward404Unless($this->book);
   }
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
-    $this->author_list = Doctrine::getTable('Author')->getAuthor();
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
+    $this->authorList = Doctrine::getTable('Author')->getAllAuthors();
   }
 
   public function executeCreate(sfWebRequest $request)
   {
-    $book = new  Book () ;
+    $book = new Book() ;
     $this->saveChange($request, $book);
-    $this->redirect('Library/show?id_book=' . $book->getid_book());
+    $this->redirect('Library/show?bookId=' . $book->getBookId());
   }
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
-    $this->book = Doctrine::getTable('Book')->find($request->getParameter('id_book'));
-    $this->author_list = Doctrine::getTable('Author')->getAuthor();
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
+    $this->book = Doctrine::getTable('Book')->find($request->getParameter('bookId'));
+    $this->authorList = Doctrine::getTable('Author')->getAllAuthors();
   }
 
   public function executeChangeBook(sfWebRequest $request)
   {
-    $book = Doctrine::getTable('Book')->find($request->getParameter('id_book'));
+    $book = Doctrine::getTable('Book')->find($request->getParameter('bookId'));
     $this->saveChange($request, $book);
-    $this->redirect('Library/show?id_book=' . $request->getParameter('id_book'));
+    $this->redirect('Library/show?bookId=' . $request->getParameter('bookId'));
   }
 
   public function saveChange(sfWebRequest $request, Book $book)
@@ -92,16 +92,16 @@ class LibraryActions extends sfActions
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod('post') || $request->isMethod('put'));
-    $this->forward404Unless($book = Doctrine::getTable('Book')->find($request->getParameter('id_book')), sprintf('Object book does not exist (%s).', $request->getParameter('id_book')));
+    $this->forward404Unless($book = Doctrine::getTable('Book')->find($request->getParameter('bookId')), sprintf('Object book does not exist (%s).', $request->getParameter('bookId')));
     $this->form = new BookForm($book);
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
     $this->processForm($request, $this->form);
     $this->setTemplate('edit');
   }
 
   public function executeDelete(sfWebRequest $request)
   {
-    $this->forward404Unless($book = Doctrine::getTable('Book')->find($request->getParameter('id_book')), sprintf('Object book does not exist (%s).', $request->getParameter('id_book')));
+    $this->forward404Unless($book = Doctrine::getTable('Book')->find($request->getParameter('bookId')), sprintf('Object book does not exist (%s).', $request->getParameter('bookId')));
     $book->delete();
     $this->redirect('Library/index');
   }
@@ -112,7 +112,7 @@ class LibraryActions extends sfActions
     if ($form->isValid())
     {
       $book = $form->save();
-      $this->redirect('Library/edit?id_book=' . $book['id_book']);
+      $this->redirect('Library/edit?bookId=' . $book['id_book']);
     }
   }
 
@@ -120,16 +120,16 @@ class LibraryActions extends sfActions
   {
     if (!empty($request->getParameter('strSearch')))
     {
-      $this->book_list = Doctrine::getTable('Book')->findBook($request->getParameter('strSearch'));
-      $this->genre_list = Doctrine::getTable('Genre')->getGenre();
+      $this->bookList = Doctrine::getTable('Book')->findBook($request->getParameter('strSearch'));
+      $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
       $this->setTemplate('index');
     }
   }
 
   public function executeAuthor()
   {
-    $this->author_list = Doctrine::getTable('Author')->getAuthor();
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
+    $this->authorList = Doctrine::getTable('Author')->getAllAuthors();
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
   }
 
   public function executeRegistration(sfWebRequest $request)
@@ -188,27 +188,26 @@ class LibraryActions extends sfActions
   public function saveNewUser(sfWebRequest $request)
   {
     $this->userRole = Doctrine::getTable('Role')->getRole('user');
-    $user = new  User ();
+    $user = new User();
     $user->login = $request->getParameter('login');
     $user->password = $request->getParameter('pass');
     $user->name = $request->getParameter('userName');
-    $user->id_role = $this->userRole->getid_role();
+    $user->id_role = $this->userRole->getRoleId();
     $user->save();
   }
 
   public function executeUserProfile()
   {
     $this->user = Doctrine::getTable('User')->findUserByLogin($this->getUser()->getAttribute('userLogin'));
-    $this->comment_list = Doctrine::getTable('Comment')->getComment($this->getUser()->getAttribute('userLogin'));
-    $this->view_list = Doctrine::getTable('View')->getView($this->getUser()->getAttribute('userLogin'));
-    $this->genre_list = Doctrine::getTable('Genre')->getGenre();
-    $this->user_list = Doctrine::getTable('User')->getAllUser($this->getUser()->getAttribute('userLogin'));
-    $this->last_comment_list = Doctrine::getTable('Comment')->getLastComment($this->getUser()->getAttribute('userLogin'));
+    $this->commentList = Doctrine::getTable('Comment')->getComment($this->getUser()->getAttribute('userLogin'));
+    $this->viewList = Doctrine::getTable('View')->getView($this->getUser()->getAttribute('userLogin'));
+    $this->genreList = Doctrine::getTable('Genre')->getAllGenres();
+    $this->userList = Doctrine::getTable('User')->getAllUser($this->getUser()->getAttribute('userLogin'));
+    $this->lastCommentList = Doctrine::getTable('Comment')->getLastComment($this->getUser()->getAttribute('userLogin'));
   }
 
   public function executeLogOut()
   {
-    $this->getUser()->getAttributeHolder()->remove('error');
     $this->getUser()->getAttributeHolder()->remove('userLogin');
     $this->getUser()->setAuthenticated(false);
     $this->redirect('Library/index');
@@ -216,7 +215,7 @@ class LibraryActions extends sfActions
 
   public function executeAddNewComment(sfWebRequest $request)
   {
-    $comment = new  Comment();
+    $comment = new Comment();
     $comment->comment = $request->getParameter('newComment');
     $comment->rating = $request->getParameter('rating') ? $request->getParameter('rating') : 0;
     $comment->id_book = $request->getParameter('bookId');
@@ -224,7 +223,7 @@ class LibraryActions extends sfActions
 
     $comment->save();
     $this->updateBookRating($request);
-    $this->redirect('Library/show?id_book=' . $request->getParameter('bookId'));
+    $this->redirect('Library/show?bookId=' . $request->getParameter('bookId'));
   }
 
   public function updateBookRating(sfWebRequest $request)
@@ -267,13 +266,14 @@ class LibraryActions extends sfActions
   public function executeView(sfWebRequest $request)
   {
     $user = Doctrine::getTable('User')->findUserByLogin($this->getUser()->getAttribute('userLogin'));
-    $view = new  View();
-    $view->id_user = $user->getid_user();
+    $view = new View();
+    $view->id_user = $user->getUserId();
     $view->id_book = $request->getParameter('bookId');
     $view->save();
     $this->setTemplate('show');
   }
 }
+
 
 
 

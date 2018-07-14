@@ -4,7 +4,7 @@
  */
 class GenreTable extends Doctrine_Table
 {
-    public function getGenre()
+    public function getAllGenres()
     {
         $q = $this->createQuery('g');
         return $q->execute();

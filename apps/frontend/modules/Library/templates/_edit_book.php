@@ -1,6 +1,6 @@
-<form enctype="multipart/form-data" action="<?= url_for('Library/ChangeBook?id_book='.$book->getid_book()) ?>" method="POST">
-  <input type="hidden" name = "bookId" value = " <?= $book->getid_book() ?>"/>
-  <img src="<?= $book->getillustration() ?>" alt="<?= $book->getname() ?>" title="<?= $book->getname() ?>" class="img-change">
+<form enctype="multipart/form-data" action="<?= url_for('Library/ChangeBook?bookId='.$book->getBookId()) ?>" method="POST">
+  <input type="hidden" name = "bookId" value = " <?= $book->getBookId() ?>"/>
+  <img src="<?= $book->getBookIllustration() ?>" alt="<?= $book->getBookName() ?>" title="<?= $book->getBookName() ?>" class="img-change">
   <div class="image-upload-container">
     <label for="image-upload-click" class="image-label">Сменить картинку</label>
     <div class="image-preview">
@@ -10,41 +10,41 @@
   <div class="book-description">
     <div class="form-group">
       <label class="сontrol-label">Название книги</label>
-      <input type="text" name="bookName" class="form-control" value="<?= $book->getname() ?>">
+      <input type="text" name="bookName" class="form-control" value="<?= $book->getBookName() ?>">
     </div>
     <div class="form-group">
       <label class="сontrol-label">Автор</label>
-      <input type="hidden" name = "AuthorId" value = " <?= $book->getid_author() ?>"/>
+      <input type="hidden" name = "AuthorId" value = " <?= $book->getAuthorId() ?>"/>
       <select name="bookAuthor" class="form-control">
-        <?php foreach ($author_list as $author): {
+        <? foreach ($authorList as $author): {
           $selected = '';
-          if ($author->getname() == $book->Author->name)
+          if ($author->getAuthorName() == $book->getAuthorName())
             $selected = 'selected'?>
-          <option value = <?= $author->getid_author() ?> <?= $selected ?> > <?= $author->getname() ?> </option>
-        <?php } endforeach; ?>
+          <option value = <?= $author->getAuthorId() ?> <?= $selected ?> > <?= $author->getAuthorName() ?> </option>
+        <? } endforeach; ?>
       </select>
     </div>
     <div class="form-group">
       <label class="сontrol-label">Год первого издания</label>
-      <input type="text" name="bookYear" class="form-control" value="<?= $book->getyear_create() ?>">
+      <input type="text" name="bookYear" class="form-control" value="<?= $book->getYearCreate() ?>">
     </div>
     <div class="form-group">
       <label class="сontrol-label">Жанр</label>
       <select name="bookGenre" class="form-control">
-        <?php foreach ($genre_list as $genre): {
+        <? foreach ($genreList as $genre): {
           $selected = '';
-          if ($genre->getname() == $book->Genre->name)
+          if ($genre->getGenreName() == $book->getGenreName())
             $selected = 'selected'?>
-          <option value = <?= $genre->getid_genre() ?> <?= $selected ?> > <?= $genre->getname() ?> </option>
-        <?php } endforeach; ?>
+          <option value = <?= $genre->getGenreId() ?> <?= $selected ?> > <?= $genre->getGenreName() ?> </option>
+        <? } endforeach; ?>
       </select>
     </div>
   </div>
   <div class="form-group">
     <label class="сontrol-label">Интересные факты о книге</label>
-    <textarea type="text" name="bookFact" class="form-control" id="resize"><?= $book->getfact() ?></textarea>
+    <textarea type="text" name="bookFact" class="form-control" id="resize"><?= $book->getTextFact() ?></textarea>
   </div>
   <div class="clear"></div>
   <input class="btn btn-default" type="submit" value="Сохранить" />
-  <a class="btn btn-default pull-right" href="<?= url_for('Library/show?id_book='.$book->getid_book()) ?>">отмена</a>
+  <a class="btn btn-default pull-right" href="<?= url_for('Library/show?bookId='.$book->getBookId()) ?>">отмена</a>
 </form>

@@ -15,9 +15,9 @@
       <input type="hidden" name = "AuthorId" />
       <select name="bookAuthor" class="form-control">
         <option disabled selected="selected">Выберите Автора</option>
-        <?php foreach ($author_list as $author): ?>
-          <option value = <?= $author->getid_author()?>>  <?= $author->getname() ?> </option>
-        <?php endforeach; ?>
+        <? foreach ($authorList as $author): ?>
+          <option value = <?= $author->getAuthorId()?>>  <?= $author->getAuthorName() ?> </option>
+        <? endforeach; ?>
       </select>
     </div>
     <div class="form-group">
@@ -28,9 +28,9 @@
       <label class="сontrol-label">Жанр</label>
       <select name="bookGenre" class="form-control">
         <option disabled selected="selected">Выберите жанр</option>
-        <?php foreach ($genre_list as $genre): ?>
-          <option value = <?= $genre->getid_genre()?>>  <?= $genre->getname() ?> </option>
-        <?php endforeach; ?>
+        <? foreach ($genreList as $genre): ?>
+          <option value = <?= $genre->getGenreId()?>>  <?= $genre->getGenreName() ?> </option>
+        <? endforeach; ?>
       </select>
     </div>
   </div>
@@ -40,7 +40,7 @@
   </div>
   <div class="clear"></div>
   <input class="btn btn-default" type="submit" value="Сохранить" />
-  <a class="btn btn-default pull-right" href="profile.php">отмена</a>
+  <a class="btn btn-default pull-right" href="<?= url_for('Library/Profile') ?>">отмена</a>
 </form>
 
 

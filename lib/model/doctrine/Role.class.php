@@ -5,5 +5,8 @@
  */
 class Role extends BaseRole
 {
-
+  public function getRoleId()
+  {
+    return $this->_get('id_role');
+  }
 }

@@ -5,5 +5,48 @@
  */
 class Comment extends BaseComment
 {
+  public function getBookId()
+  {
+    return $this->_get('id_book');
+  }
 
+  public function getCommentId()
+  {
+    return $this->_get('id_comment');
+  }
+
+  public function getUserId()
+  {
+    return $this->_get('id_user');
+  }
+
+  public function getUserAvatar()
+  {
+    return $this->User->_get('avatar');
+  }
+
+  public function getUserName()
+  {
+    return $this->User->_get('name');
+  }
+
+  public function getBookName()
+  {
+    return $this->Book->_get('name');
+  }
+
+  public function getDateInsert()
+  {
+    return $this->_get('date_insert');
+  }
+
+  public function getBookRating()
+  {
+    return $this->_get('rating');
+  }
+
+  public function getTextComment()
+  {
+    return $this->_get('comment');
+  }
 }

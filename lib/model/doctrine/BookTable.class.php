@@ -4,25 +4,25 @@
  */
 class BookTable extends Doctrine_Table
 {
-    public function getBook()
+    public function getAllBooks()
     {
         $q = $this->createQuery('b');
         return $q->execute();
     }
 
-    public function getTopBook()
+    public function getTop100Books()
     {
         $q = $this->createQuery('b')
             ->orderBy ('b.rating desc')
-            ->limit(3);
+            ->limit(100);
         return $q->execute();
     }
 
-    public function getNewBook()
+    public function getNew100Books()
     {
         $q = $this->createQuery('b')
             ->orderBy ('b.date_insert desc')
-            ->limit(3);
+            ->limit(100);
         return $q->execute();
     }
 
@@ -35,17 +35,17 @@ class BookTable extends Doctrine_Table
         return $q->execute();
     }
 
-    public function findByGenre($id_genre)
+    public function findByGenre($genreId)
     {
         $q = $this->createQuery('b')
-            ->where('b.id_genre = '. $id_genre);
+            ->where('b.id_genre = '. $genreId);
         return $q->execute();
     }
 
-    public function findByAuthor($id_author)
+    public function findByAuthor($authorId)
     {
         $q = $this->createQuery('b')
-            ->where('b.id_author = '. $id_author);
+            ->where('b.id_author = '. $authorId);
         return $q->execute();
     }
 }

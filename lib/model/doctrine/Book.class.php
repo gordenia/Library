@@ -5,5 +5,48 @@
  */
 class Book extends BaseBook
 {
+  public function getAuthorId()
+  {
+    return $this->_get('id_author');
+  }
 
+  public function getBookId()
+  {
+    return $this->_get('id_book');
+  }
+
+  public function getBookIllustration()
+  {
+    return $this->_get('illustration');
+  }
+
+  public function getBookName()
+  {
+    return $this->_get('name');
+  }
+
+  public function getAuthorName()
+  {
+    return $this->Author->_get('name');
+  }
+
+  public function getGenreName()
+  {
+    return $this->Genre->_get('name');
+  }
+
+  public function getBookRating()
+  {
+    return $this->_get('rating');
+  }
+
+  public function getYearCreate()
+  {
+    return $this->_get('year_create');
+  }
+
+  public function getTextFact()
+  {
+    return $this->_get('fact');
+  }
 }

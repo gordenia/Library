@@ -1,6 +1,6 @@
 <div id="menu_icon"></div>
 <div class="registration">
-  <?php
+  <?
     $url = 'Library/Registration';
     $title = "Войти/Зарестрироваться";
 
@@ -31,11 +31,11 @@
     <li><a title="Авторы" href="<?= url_for('Library/Author') ?>">Авторы</a></li>
     <li><a title="все жанры" href="<?= url_for('@homepage') ?>">Жанры</a></li>
       <ul class="list-genres">
-        <?php foreach ($genre_list as $genre): ?>
+        <? foreach ($genreList as $genre): ?>
           <li>
-            <a title="Жанр" href="<?= url_for('Library/Genre?id_genre='.$genre->getid_genre())  ?>"><?= $genre->getname() ?> </a>
+            <a title="Жанр" href="<?= url_for('Library/Genre?genreId='.$genre->getGenreId())  ?>"><?= $genre->getGenreName() ?> </a>
           </li>
-        <?php endforeach; ?>
+        <? endforeach; ?>
       </ul>
   </ul>
 </nav>
